@@ -1,0 +1,24 @@
+{
+  "name": "sanescript",
+  "version": "0.1.0",
+  "description": "JavaScript with sanity",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyeonupark/sanescript.git"
+  },
+  "keywords": [
+    "sanescript",
+    "sane-script",
+    "sane"
+  ],
+  "author": "HyeonuPark",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyeonupark/sanescript/issues"
+  },
+  "homepage": "https://github.com/hyeonupark/sanescript#readme"
+}
