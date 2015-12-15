@@ -100,7 +100,9 @@ switch (value) {
 //SaneScript
 
 a.$
+
 a.$.b.$.c
+
 a.$().b
 ```
 
@@ -108,11 +110,13 @@ a.$().b
 //JavaScript
 
 a != null
-(typeof a === 'undefined'
+
+(a == null
   ? null
-  : typeof a.b === 'undefined'
+  : a.b == null
     ? null
     : a.b.c)
+
 (typeof a !== 'function'
   ? null
   : a().b)
