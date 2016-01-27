@@ -437,7 +437,7 @@ let __saneCollection__, __saneValue__
 
 ## Macro
 
-To see the full specifications of macros below, see (Macro.md)[https://github.com/hyeonupark/sanescript/blob/master/history/v0.2.0/Macro.md]
+To see the full specifications of macros below, see (Macro.md)[https://github.com/hyeonupark/sanescript/blob/master/Macro.md]
 
 List of default macros are below
 
