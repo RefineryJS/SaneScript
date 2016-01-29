@@ -1,11 +1,11 @@
 SaneScript
 ===========
 
-JavaScript as it should be
+> JavaScript as it should be
+
+SaneScript v0.2.1
 
 Inspired from [this article](https://github.com/rwaldron/tc39-notes/blob/master/es6/2015-01/JSExperimentalDirections.pdf)
-
-SaneScript v0.2.0
 
 # Description
 
@@ -27,7 +27,7 @@ In SaneScript, it's syntax is just JavaScript. It means we don't need any config
 
 And there must be some people who don't like CoffeeScript's syntax, such as python-like block and parenthesis-less function call, but also hate JavaScript's old-and-wrong choices. If you're such a person, SaneScript is for you!
 
-And also, you can use your comfortable tools like editors and linters. No more configuration for it. Just start coding!
+And also, you can use your comfortable tools for JavaScript like editors and linters. No more configuration for it. Just start coding!
 
 # Features
 
@@ -40,6 +40,8 @@ And also, you can use your comfortable tools like editors and linters. No more c
 Like 'use strict', outside of the block that contains this directive will not be affected.
 
 'use sanescript' directive prevents preventing modifying, so use it if you want to write SaneScript code in your JavaScript-ified block.
+
+It's also a good habit to put `'use sanescript'` on every first line of source code to notice it's a SaneScript code.
 
 ```js
 console.log("It's SaneScript")
@@ -287,6 +289,7 @@ export function doSomething (obj) {
   console.log(__saneSymbols__.data)
 }
 
+export {__saneSymbols__ as _symbol}
 ```
 
 ## Macro
@@ -331,9 +334,66 @@ let map = new Map([
 
 - Multi-lined template strings automatically de-indented at compile time using [dedent](https://github.com/dmnd/dedent)
 
+- Array literal within `await` expression automatically be wrapped with Promise.all
+
 # Detail
 
 Feature descriptions above are simply brief concept of what those features are, but actual transformation from SaneScript to JavaScript may differ due to some technical/minor reasons. This section describe those deep inside of SaneScript specification.
+
+## Override operator symbol
+
+You can change SaneScript's operator symbol in specific block.
+
+```js
+// SaneScript
+
+{
+  'override Existential if_exist'
+
+  a.if_exist.b.if_exist().$
+}
+
+{
+  'override Hidden $$'
+
+  obj.$$myData = 'foo'
+  obj._otherData = 'bar'
+}
+
+a.if_exist
+obj.$$someData
+```
+
+```js
+// JavaScript
+
+__saneSymbols__ = {
+  myData: Symbol('myData')
+}
+
+{
+  (
+    a == null
+      ? null
+      : a.b == null
+        ? null
+        : a.b().$
+  )
+}
+
+{
+  obj[__saneSymbols__.myData] = 'foo'
+  obj._otherData = 'bar'
+}
+
+a.if_exist
+obj.$$someData
+```
+
+List of overridable operators and default symbols are below.
+
+- Existential - `$`
+- Hidden - `_`
 
 ## Existential operator
 
@@ -416,20 +476,20 @@ map['answer'] = state.otherMap['truth'] = 42
 let __saneCollection__, __saneValue__
 
 (
-  __saneCollection__ = map,
   __saneValue__ = bar,
+  __saneCollection__ = map,
   map = __saneCollection__.set(foo, __saneValue__) || __saneCollection__,
   __saneValue__
 )
 
 (
-  __saneCollection__ = map,
   __saneValue__ = (
-    __saneCollection__ = state.otherMap,
     __saneValue__ = 42,
+    __saneCollection__ = state.otherMap,
     state.otherMap = __saneCollection__.set('truth', __saneValue__) || __saneCollection__,
     __saneValue__
   ),
+  __saneCollection__ = map,
   map = __saneCollection__.set('answer', __saneValue__) || __saneCollection__,
   __saneValue__
 )
@@ -437,8 +497,45 @@ let __saneCollection__, __saneValue__
 
 ## Macro
 
-To see the full specifications of macros below, see (Macro.md)[https://github.com/hyeonupark/sanescript/blob/master/history/v0.2.0/Macro.md]
+Full list of official SaneScript macros.
 
-List of default macros are below
+### ~Map()
 
-- ~Map()
+This macro convert object literal to ES2015 Map.
+
+#### Features
+
+1. Transform object literal's key-value pairs to Map's key-value pairs.
+1. Computed key's inner expression become map's key directly, without stringify.
+1. Spread property transfered directly, to make it easy to creating a map from existing map, same look-and-feel as object spread.
+
+#### Example
+
+```js
+// SaneScript
+
+let map = ~Map({
+  foo: 'bar',
+  [obj]: 42,
+  myFunc (arg) {
+    console.log(arg)
+  },
+  ...otherMap
+})
+```
+
+```js
+// JavaScript
+
+let map = new Map([
+  ['foo', 'bar'],
+  [obj, 42],
+  ['myFunc', function myFunc (arg) {
+    console.log(arg)
+  }],
+  ...otherMap
+])
+```
+
+## [LICENSE](http://creativecommons.org/licenses/by-sa/3.0/)
+![CC BY-SA](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg)
