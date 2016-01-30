@@ -3,13 +3,15 @@ SaneScript
 
 > JavaScript as it should be
 
-SaneScript v0.3.0
+SaneScript v0.4.0
 
 Inspired from [this article](https://github.com/rwaldron/tc39-notes/blob/master/es6/2015-01/JSExperimentalDirections.pdf)
 
 See [Features.md](https://github.com/SaneScript/SaneScript/blob/master/Features.md) for the full list of the SaneScript features.
 
 See [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md) and [Flags.md](https://github.com/SaneScript/SaneScript/blob/master/Flags.md) for the deep inside of the SaneScript specification.
+
+See [here](https://gist.github.com/HyeonuPark/6af6965ca6b91cc6a79c) for the rules of the SaneScript specification.
 
 # Description
 

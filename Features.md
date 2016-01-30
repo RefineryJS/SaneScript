@@ -3,7 +3,7 @@ Features
 
 Brief explanation of the SaneScript features.
 
-Examples below can be little bit different from actual transformation. In that case, see [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md)
+Examples below can be little bit different from actual transformation due to technical/minor reasons. In that case, see [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md)
 
 # Sane equality operator
 
@@ -276,6 +276,6 @@ let map = new Map([
 
 - `'use strict'` is automatically inserted.
 
-- Multi-lined template strings automatically de-indented at compile time using [dedent](https://github.com/dmnd/dedent)
+- Multi-lined template strings automatically de-indented at compile time like [dedent](https://github.com/dmnd/dedent)
 
-- Array literal within `await` expression automatically be wrapped with `Promise.all`
+- Array literal within `await` expression automatically be wrapped with `Promise.all()`

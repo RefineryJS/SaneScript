@@ -76,6 +76,8 @@ And also, values that used more then once will be cached.
 map[foo] = bar
 
 map['answer'] = state.otherMap['truth'] = 42
+
+getMap()['key'] = 'value' // getMap() is not a LValue
 ```
 
 ```js
@@ -99,6 +101,12 @@ let __saneCollection__, __saneValue__
   ),
   __saneCollection__ = map,
   map = __saneCollection__.set('answer', __saneValue__) || __saneCollection__,
+  __saneValue__
+)
+
+(
+  __saneValue__ = 'value',
+  getMap().set('key', __saneValue__),
   __saneValue__
 )
 ```
