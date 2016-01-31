@@ -5,33 +5,33 @@ SaneScript
 
 SaneScript v0.4.0
 
-Inspired from [this article](https://github.com/rwaldron/tc39-notes/blob/master/es6/2015-01/JSExperimentalDirections.pdf)
+Inspired by [this article](https://github.com/rwaldron/tc39-notes/blob/master/es6/2015-01/JSExperimentalDirections.pdf)
 
-See [Features.md](https://github.com/SaneScript/SaneScript/blob/master/Features.md) for the full list of the SaneScript features.
+See [Features.md](https://github.com/SaneScript/SaneScript/blob/master/Features.md) for the full list of SaneScript features.
 
-See [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md) and [Flags.md](https://github.com/SaneScript/SaneScript/blob/master/Flags.md) for the deep inside of the SaneScript specification.
+See [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md) and [Flags.md](https://github.com/SaneScript/SaneScript/blob/master/Flags.md) for the in-depth specification of SaneScript.
 
-See [here](https://gist.github.com/HyeonuPark/6af6965ca6b91cc6a79c) for the rules of the SaneScript specification.
+See [here](https://gist.github.com/HyeonuPark/6af6965ca6b91cc6a79c) for the principles of the SaneScript.
 
 # Description
 
 ## What's SaneScript?
 
-SaneScript is a programming language which has same syntax as JavaScript, especially ES2015 and newer, but slightly different semantic. It's main purpose is to compile to JavaScript.
+SaneScript is a programming language which is basically JavaScript(More specifically, ES2015 and newer) but with slightly different semantic. It's main purpose is to be compiled to JavaScript.
 
-## Another compile-to-js? Why does it even needed?
+## Another compile-to-js? What for?
 
-JavaScript is a good language, but some point of it is insane. Many of those bad points can be replaced by new things from ES2015 or newer, but using new syntax is less readable and need more typing then traditional way.
+JavaScript is a good language, but some part of it is... '*insane*'. ES2015 and later versions of JavaScript brings some new features to fix this, but the new syntax is less readable and requires more typing than doing things the traditional way.
 
-They cannot be replaced due to backward compatibility. But wait, now everybody compiles to JavaScript, then why don't we compile JavaScript to JavaScript?
+The new features can't replace the old ones, for the sake of backward compatibility; But wait, now everybody compiles to JavaScript, then why don't we compile JavaScript to JavaScript?
 
 ## How about CoffeeScript?
 
-CoffeeScript is a good language. It's syntax can hide lots of JavaScript's ugly parts. But it's not a JavaScript at all, and JavaScript is rapidly changing now. For example, if you want to use async-await keywords in CoffeeScript, you should just wait until language designer and compiler maintainer decide to include that feature to CoffeeScript.
+CoffeeScript is a good language. It's syntax can hide lots of JavaScript's ugly parts. But it's not exactly JavaScript, and JavaScript is rapidly changing now. So if you want to use JavaScript's new features in CoffeeScript, you have to wait until the CoffeeScript designer and the compiler maintainer includes it in the CoffeeScript.
 
-In SaneScript, it's syntax is just JavaScript. It means we don't need any configuration to adapt JavaScript's future standard.
+SaneScript's syntax is just JavaScript. It means we don't have to make additional changes to adapt to JavaScript's future standards, unless JavaScript changes dramatically.
 
-And there must be some people who don't like CoffeeScript's syntax, such as python-like block and parenthesis-less function call, but also hate JavaScript's old-and-wrong choices. If you're such a person, SaneScript is for you!
+And there are some people who don't like CoffeeScript's syntax(python-like blocks, parenthesis-less function calls, etc.) but also hate JavaScript's old-and-wrong choices. If you are one of those people, SaneScript is for you!
 
 And also, you can use your comfortable tools for JavaScript like editors and linters. No more configuration for it. Just start coding!
 
