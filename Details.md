@@ -1,7 +1,7 @@
 Details
 ========
 
-Features.md is simply a brief concept of what those features are, but actual transformation from SaneScript to JavaScript may differ due to some technical/minor reasons. This section describe those deep inside of SaneScript specification.
+[Features.md](https://github.com/SaneScript/SaneScript/blob/master/Features.md) is simply a brief concept of the features, but actual compilation from SaneScript to JavaScript may differ due to some technical/minor reasons. This document describes those in-depth SaneScript specification.
 
 # Existential operator
 
@@ -47,7 +47,7 @@ let __saneValue__
 
 # Automatic `new` insertion
 
-List of supported keywords are below.
+List of default keywords are below.
 
 - Map
 - Set
@@ -64,11 +64,13 @@ List of supported keywords are below.
 - Intl.DateTimeFormat
 - Intl.NumberFormat
 
+You can add to, or remove from the keyword list; See [Flags.md, AddNewInsertionTarget and RemoveInsertionTarget](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#AddNewInsertionTarget).
+
 # Syntactic getter/setter
 
-To support immutable data structure like Immutable.js, setter transform is little bit more complicate then described above. This makes possible to handle immutable data as normal mutable data.
+To support immutable data structures, like Immutable.js, setter transformation is little bit more complicated than described in [Features.md](https://github.com/SaneScript/SaneScript/blob/master/Features.md). This makes it possible to handle immutable data as normal mutable data.
 
-And also, values that used more then once will be cached.
+Values used more than once will be cached.
 
 ```js
 // SaneScript
@@ -113,9 +115,9 @@ let __saneCollection__, __saneValue__
 
 # Hidden property
 
-Single underscore will not be transformed.
+Single underscore, with nothing behind, will not be replaced.
 
-Double-underscore-prefixed names will be transformed to single-underscore-prefixed names.
+Double-underscore-prefixed names will be replaced by single-underscore-prefixed names.
 
 ```js
 // SaneScript
@@ -141,9 +143,9 @@ This macro converts object literal to ES2015 Map.
 
 ### Features
 
-1. Transform object literal's key-value pairs to Map's key-value pairs.
-1. Computed key's inner expression become map's key directly, without stringify.
-1. Spread property transfered directly, to make it easy to creating a map from existing map, same look-and-feel as object spread.
+1. Transforms object literal's key-value pairs to Map's key-value pairs.
+1. Computed key's inner expression becomes map's key directly, without being stringified.
+1. Spread properties are transferred directly, to make it easy to create a map from an existing map, same look-and-feel as object spread.
 
 ### Example
 
