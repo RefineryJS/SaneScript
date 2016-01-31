@@ -3,15 +3,15 @@ Features
 
 Brief explanation of the SaneScript features.
 
-Examples below can be little bit different from actual transformation due to technical/minor reasons. In that case, see [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md)
+Note that examples below can be a bit different from actual compiled results, due to technical/minor reasons. For such cases, see [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md)
 
 # Sane equality operator
 
 > `===`, `==`, `!==`, `!=`
 
-Basically, === and == is swapped in SaneScript. Same as !== and !=
+Basically, === and == is swapped in SaneScript, So are !== and !=.
 
-So 2-letter-operators do not type coercion, while 3-letter-ones do.
+So 2-letter-operators don't change types, while 3-letter-ones do.
 
 ```js
 // SaneScript
@@ -33,11 +33,11 @@ undefined == null // true
 4 != '4' // false
 ```
 
-# Chainable comparison operator
+# Chainable comparison operators
 
 > `2 < x < 7`
 
-How can you check some value is in the range of 2~7? Of course, there's more readable way.
+Multiple comparison operators, in a single expression. Quite readable.
 
 ```js
 // SaneScript
@@ -101,7 +101,7 @@ switch (value) {
 
 > `a.$.b.$().c`
 
-`.$` is an existential operator. You can read this operator as `Do only if possible`
+`.$` is an existential operator. You can read this as 'Do only if possible'.
 
 ```js
 // SaneScript
@@ -169,9 +169,9 @@ obj.set(key, 'value')
 
 > `obj._hidden`
 
-Underscore-prefixed property is an alias for Symbol(). Symbols are pooled by it's name, and each module(source file) has it's own symbol pool. So symbols with same name but used in different modules not be same normally.
+Underscore-prefixed property is an alias for Symbol(). Symbols are pooled by its name, and each module(source file) has it's own symbol pool. So symbols with same name but used in different modules aren't the same, normally.
 
-`_iterator`, `_match`, `_species` are reserved. For example, `_iterator` is an alias for `Symbol.iterator`. It means, they are same symbol across modules.
+`_iterator`, `_match`, `_species` are reserved; for example, `_iterator` is an alias for `Symbol.iterator`.  That is, they are the same symbol across different modules.
 
 `Symbol` keyword is treated as a namespace for this module's symbol pool. You can access/modify your symbol pool using this keyword.
 
@@ -240,11 +240,11 @@ export {__saneSymbols__ as _symbol}
 
 > `~Macro()`
 
-Macro is a compile-time function which takes source code and replace it with modified code. In SaneScript, macro can be implemented as a compiler plug-in.
+Macro is a compile-time function which takes source code and replace it with modified code. In SaneScript, macros can be implemented as a compiler plug-in.
 
 Expression prefixed by `~`(binary not operator in JavaScript) is treated as macro.
 
-Example below describes how `~Map()` macro works.
+Example below describes how the default `~Map()` macro works.
 
 ```js
 // SaneScript
@@ -274,8 +274,8 @@ let map = new Map([
 
 # Miscellaneous
 
-- `'use strict'` is automatically inserted.
+- `'use strict'` is inserted automatically.
 
-- Multi-lined template strings automatically de-indented at compile time like [dedent](https://github.com/dmnd/dedent)
+- Multi-lined template strings are automatically de-indented at compile time, like [dedent](https://github.com/dmnd/dedent).
 
-- Array literal within `await` expression automatically be wrapped with `Promise.all()`
+- Array literal within `await` expressions are automatically wrapped with `Promise.all()`.
