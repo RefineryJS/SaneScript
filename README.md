@@ -33,7 +33,7 @@ SaneScript's syntax is just JavaScript. It means we don't have to make additiona
 
 And there are some people who don't like CoffeeScript's syntax(python-like blocks, parenthesis-less function calls, etc.) but also hate JavaScript's old-and-wrong choices. If you are one of those people, SaneScript is for you!
 
-And also, you can use your comfortable tools for JavaScript like editors and linters. No more configuration for it. Just start coding!
+And also, you can use your comfortable tools for JavaScript, like editors and linters. No more configuration for it. Just start coding!
 
 # [LICENSE](http://creativecommons.org/licenses/by-sa/3.0/)
 ![CC BY-SA](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg)
