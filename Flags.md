@@ -1,17 +1,17 @@
 Compiler flags
 ===============
 
-Compiler flags are the way to tell SaneScript compiler how to handle this block of code, like `'use strict'` in JavaScript.
+Compiler flags are the way to tell SaneScript compiler how to handle a specific block of code. Think of `'use strict'` in JavaScript.
 
 Flag set is inherited from outer block, and root block's flag set is inherited from default flag set.
 
-Syntax for compiler flag is `'set <flag-name> <flag-value>'` and then that name of flag is set to a string as specified. You can omit `<flag-value>` then flag is set as `Boolean true`.
+Syntax for compiler flag is `'set <flag-name> <flag-value>'` which sets the flage with the name `<flag-name>`to string `<flag-value>`. If `<flag-value>` is omitted, flag `<flag-name>` is set to Boolean `true`.
 
-Flag name is not case-sensitive, while flag value is case-sensitive.
+`<flag-name>` is not case-sensitive, while `<flag-value>` is.
 
-Custom flag names can be used for language plug-ins. By default, they're safely ignored.
+Custom flag names can be used by language plug-ins. By default, unspecified `<flag-name>`s are safely ignored.
 
-List of language-default flags are below.
+List of default flags are below.
 
 # ExistentialOperator
 
@@ -48,11 +48,11 @@ Notice that automatic `new` insertion is triggered by checking identifier name, 
 
 - none or `true`
 
-  Behavior not defined, ignored.
+  The expression is ignored.
 
 - else
 
-  Flag value is treated as a space-separated list of identifiers.
+  Flag value is treated as a space-separated list of identifiers, and those identifiers are added to the list of targets.
 
   ```js
   'set AddNewInsertionTarget MyClass lib.OtherClass'
@@ -84,7 +84,7 @@ Set [hidden property](https://github.com/SaneScript/SaneScript/blob/master/Featu
 
 - none or `true`
 
-  Behavior not defined, ignored.
+  The expression is ignored.
 
 - else
 
