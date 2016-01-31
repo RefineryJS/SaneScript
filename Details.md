@@ -64,7 +64,7 @@ List of default keywords are below.
 - Intl.DateTimeFormat
 - Intl.NumberFormat
 
-You can add to, or remove from the keyword list; See [Flags.md](https://github.com/SaneScript/SaneScript/blob/master/Flags.md), AddNewInsertionTarget and RemoveInsertionTarget.
+You can add to, or remove from the keyword list; See [Flags.md, AddNewInsertionTarget and RemoveInsertionTarget](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#AddNewInsertionTarget).
 
 # Syntactic getter/setter
 
