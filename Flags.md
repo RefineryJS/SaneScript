@@ -17,6 +17,13 @@ Default: `'$'`
 
 Set [existential operator](https://github.com/SaneScript/SaneScript/blob/master/Features.md#existential-operator) symbol.
 
+```js
+'set ExistentialOperator is_exist'
+
+obj.$        // not transformed
+obj.is_exist // transformed to `obj != null`
+```
+
 - none or `''`
 
   Inherits existential operator symbol from outer block.
@@ -25,18 +32,22 @@ Set [existential operator](https://github.com/SaneScript/SaneScript/blob/master/
 
   Change existential operator symbol to specified string.
 
-  ```js
-  'set ExistentialOperator is_exist'
-
-  obj.$        // not transformed
-  obj.is_exist // transformed to `obj != null`
-  ```
-
 # HiddenPropertyPrefix
 
 Default: `'_'`
 
 Set [hidden property](https://github.com/SaneScript/SaneScript/blob/master/Features.md#hidden-property) prefix symbol.
+
+```js
+'set HiddenPropertyPrefix $$'
+
+obj._prop    // not transformed
+obj.$$prop   // transformed to Symbol
+
+obj.$$       // not transformed
+obj.$$$$prop // transformed to '$$prop'
+obj.__prop   // not transformed
+```
 
 - none or `''`
 
@@ -45,51 +56,6 @@ Set [hidden property](https://github.com/SaneScript/SaneScript/blob/master/Featu
 - else
 
   Change hidden property prefix symbol to specified string.
-
-  ```js
-  'set HiddenPropertyPrefix $$'
-
-  obj._prop    // not transformed
-  obj.$$prop   // transformed to Symbol
-
-  obj.$$       // not transformed
-  obj.$$$$prop // transformed to '$$prop'
-  obj.__prop   // not transformed
-  ```
-
-# InsertNew
-
-Default: none
-
-Add target name for [automatic `new` insertion](https://github.com/SaneScript/SaneScript/blob/master/Features.md#automatic-new-insertion)
-
-Notice that automatic `new` insertion is triggered by checking identifier name, not an object in that reference.
-
-- none or `''`
-
-  No effect.
-
-- else
-
-  Flag value is treated as a space-separated list of identifiers, and those identifiers are added to the list of targets.
-
-  ```js
-  'set InsertNew MyClass lib.OtherClass'
-
-  let obj1 = MyClass()        // transformed to `new MyClass()`
-  let obj2 = lib.OtherClass() // transformed to `new lib.OtherClass()`
-
-  let SameClass = MyClass
-  let obj3 = SameClass()      // not transformed
-  ```
-
-# IgnoreInsertNew
-
-Default: none
-
-Remove target name for [automatic `new` insertion](https://github.com/SaneScript/SaneScript/blob/master/Features.md#automatic-new-insertion)
-
-See [above](https://github.com/SaneScript/SaneScript/blob/master/Details.md#insertnew) for behavior.
 
 # ExportedSymbolKeyword
 
@@ -110,3 +76,37 @@ This flag must be in module's root block. Ones that placed in inner block will t
 - else
 
   Set export keyword of this module's symbol pool to specified string.
+
+# InsertNew
+
+Default: none
+
+Add target name for [automatic `new` insertion](https://github.com/SaneScript/SaneScript/blob/master/Features.md#automatic-new-insertion)
+
+Notice that automatic `new` insertion is triggered by checking identifier name, not an object in that reference.
+
+```js
+'set InsertNew MyClass lib.OtherClass'
+
+let obj1 = MyClass()        // transformed to `new MyClass()`
+let obj2 = lib.OtherClass() // transformed to `new lib.OtherClass()`
+
+let SameClass = MyClass
+let obj3 = SameClass()      // not transformed
+```
+
+- none or `''`
+
+  No effect.
+
+- else
+
+  Flag value is treated as a space-separated list of identifiers, and those identifiers are added to the list of targets.
+
+# IgnoreInsertNew
+
+Default: none
+
+Remove target name for [automatic `new` insertion](https://github.com/SaneScript/SaneScript/blob/master/Features.md#automatic-new-insertion)
+
+See [above](https://github.com/SaneScript/SaneScript/blob/master/Details.md#insertnew) for behavior.

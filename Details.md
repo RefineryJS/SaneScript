@@ -119,7 +119,7 @@ let __saneCollection__, __saneValue__
 
 # Hidden property
 
-Flags: [HiddenPropertyPrefix](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#hiddenpropertyprefix)
+Flags: [HiddenPropertyPrefix](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#hiddenpropertyprefix), [ExportedSymbolKeyword](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#exportedsymbolkeyword)
 
 Single underscore, with nothing behind, will not be replaced.
 
