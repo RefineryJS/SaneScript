@@ -5,6 +5,8 @@ Details
 
 # Existential operator
 
+Flags: [ExistentialOperator](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#existentialoperator)
+
 Values that are used more than once will be cached.
 
 ```js
@@ -47,7 +49,9 @@ let __saneValue__
 
 # Automatic `new` insertion
 
-List of the default keywords are below.
+Flags: [InsertNew](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#insertnew), [IgnoreInsertNew](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#ignoreinsertnew)
+
+List of the default target keywords are below.
 
 - Map
 - Set
@@ -56,15 +60,15 @@ List of the default keywords are below.
 - Date
 - Promise
 - Proxy
-- `/([A-Z].*)?Error/`
+- Error
 - ArrayBuffer
 - DataView
-- `/(Int|Uint|Float)(8|16|32|64)(Clamped)?Array/`
+- (Int|Uint|Float)(8|16|32|64)(Clamped)?Array
 - Intl.Collator
 - Intl.DateTimeFormat
 - Intl.NumberFormat
 
-You can add to, or remove from the keyword list; See [Flags.md, AddNewInsertionTarget and RemoveInsertionTarget](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#AddNewInsertionTarget).
+You can add to, or remove from the keyword list; See [Flags.md, InsertNew and IgnoreInsertNew](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#insertnew).
 
 # Syntactic getter/setter
 
@@ -115,6 +119,8 @@ let __saneCollection__, __saneValue__
 
 # Hidden property
 
+Flags: [HiddenPropertyPrefix](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#hiddenpropertyprefix)
+
 Single underscore, with nothing behind, will not be replaced.
 
 Double-underscore-prefixed names will be replaced by single-underscore-prefixed names.
@@ -131,46 +137,4 @@ obj.__prop = 'bar'
 
 obj._ = 'foo'
 obj._prop = 'bar'
-```
-
-# Macro
-
-Full list of official SaneScript macros.
-
-## ~Map()
-
-This macro converts object literal to ES2015 Map.
-
-### Features
-
-1. Transforms object literal's key-value pairs to Map's key-value pairs.
-1. Computed key's inner expression becomes map's key directly, without being stringified.
-1. Spread properties are transferred directly, to make it easy to create a map from an existing map, same look-and-feel as object spread.
-
-### Example
-
-```js
-// SaneScript
-
-let map = ~Map({
-  foo: 'bar',
-  [obj]: 42,
-  myFunc (arg) {
-    console.log(arg)
-  },
-  ...otherMap
-})
-```
-
-```js
-// JavaScript
-
-let map = new Map([
-  ['foo', 'bar'],
-  [obj, 42],
-  ['myFunc', function myFunc (arg) {
-    console.log(arg)
-  }],
-  ...otherMap
-])
 ```

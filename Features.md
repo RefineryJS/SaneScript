@@ -9,28 +9,28 @@ Note that examples below can be a bit different from actual compiled results, du
 
 > `===`, `==`, `!==`, `!=`
 
-Basically, === and == is swapped in SaneScript, So are !== and !=.
+Basically, === and == is swapped in SaneScript, so are !== and !=.
 
-So 2-letter-operators don't change types, while 3-letter-ones do.
+So 2-letter-operators don't coerce types, while 3-letter-ones do.
 
 ```js
 // SaneScript
 
-'a' == 'a' // true
-3 != '3' // true
+'a' == 'a'         // true
+3 != '3'           // true
 
 undefined === null // true
-4 !== '4' // false
+4 !== '4'          // false
 ```
 
 ```js
 // JavaScript
 
-'a' === 'a' // true
-3 !== '3' // true
+'a' === 'a'        // true
+3 !== '3'          // true
 
-undefined == null // true
-4 != '4' // false
+undefined == null  // true
+4 != '4'           // false
 ```
 
 # Chainable comparison operators
@@ -97,7 +97,7 @@ switch (value) {
 }
 ```
 
-# Existential operator
+# Existential operator <sup><sup>[detail](https://github.com/SaneScript/SaneScript/blob/master/Details.md#existential-operator)</sup></sup>
 
 > `a.$.b.$().c`
 
@@ -129,7 +129,9 @@ a != null
   : a())
 ```
 
-# Automatic `new` insertion
+# Automatic `new` insertion <sup><sup>[detail](https://github.com/SaneScript/SaneScript/blob/master/Details.md#automatic-new-insertion)</sup></sup>
+
+> No more `new`
 
 You can omit `new` keyword to instantiate some JavaScript's built in classes.
 
@@ -145,7 +147,7 @@ let map = Map()
 let map = new Map()
 ```
 
-# Syntactic getter/setter
+# Syntactic getter/setter <sup><sup>[detail](https://github.com/SaneScript/SaneScript/blob/master/Details.md#syntactic-gettersetter)</sup></sup>
 
 > `map[key]`, `map[key] = value`
 
@@ -165,13 +167,13 @@ obj.get(key)
 obj.set(key, 'value')
 ```
 
-# Hidden property
+# Hidden property <sup><sup>[detail](https://github.com/SaneScript/SaneScript/blob/master/Details.md#hidden-property)</sup></sup>
 
 > `obj._hidden`
 
 Underscore-prefixed property is an alias for Symbol(). Symbols are pooled by its name, and each module(source file) has it's own symbol pool. So symbols with same name but used in different modules aren't the same, normally.
 
-`_iterator`, `_match`, `_species` are reserved; for example, `_iterator` is an alias for `Symbol.iterator`.  That is, they are the same symbol across different modules.
+`_iterator`, `_match`, `_species` are reserved; For example, `_iterator` is an alias for `Symbol.iterator`.  That is, they are the same symbol across different modules.
 
 `Symbol` keyword is treated as a namespace for this module's symbol pool. You can access/modify your symbol pool using this keyword.
 
@@ -194,6 +196,12 @@ obj._iterator = function* () {
   yield 'baz'
 }
 
+class MyClass {
+  _method (arg) {
+    console.log('method -', arg)
+  }
+}
+
 export function doSomething (obj) {
   console.log(obj._prop)
   console.log(obj._meta)
@@ -210,46 +218,60 @@ const __saneSymbols__ = {
   species: Symbol.species,
   prop: Symbol('prop'),
   data: Symbol('data'),
-  meta: Symbol('meta')
+  meta: Symbol('meta'),
+  method: Symbol('method')
 }
+
+// !!IMPORTANT!!
+const Symbol = __saneSymbols__
 
 import {_symbol as sharedSymbols} from './symbols'
 
-__saneSymbols__.meta = sharedSymbols.meta
+Symbol.meta = sharedSymbols.meta
 
 let obj = {
-  [__saneSymbols__.prop]: 'foo'
+  [Symbol.prop]: 'foo'
 }
-obj[__saneSymbols__.data] = 42
-obj[__saneSymbols__.iterator] = function* () {
+obj[Symbol.data] = 42
+obj[Symbol.iterator] = function* () {
   yield 'foo'
   yield 'bar'
   yield 'baz'
 }
 
-export function doSomething (obj) {
-  console.log(obj[__saneSymbols__.prop])
-  console.log(obj[__saneSymbols__.meta])
-  console.log(__saneSymbols__.data)
+class MyClass {
+  [Symbol.method]
 }
 
-export {__saneSymbols__ as _symbol}
+export function doSomething (obj) {
+  console.log(obj[Symbol.prop])
+  console.log(obj[Symbol.meta])
+  console.log(Symbol.data)
+}
+
+export {Symbol as _symbol}
 ```
 
 # Macro
 
 > `~Macro()`
 
-Macro is a compile-time function which takes source code and replace it with modified code. In SaneScript, macros can be implemented as a compiler plug-in.
+Macro is a compile-time function which takes source code(not runtime value) and replace it with modified code. In SaneScript, macros can be implemented as a compiler plug-in.
 
-Expression prefixed by `~`(binary not operator in JavaScript) is treated as macro.
+Raw function(not a property of another object) call prefixed by `~`(binary not operator in JavaScript) is treated as macro. `~` operator other than macro is not allowed in SaneScript.
 
-Example below describes how the default `~Map()` macro works.
+To use macro, you should declare it with special form of the import statement. Imports from `~` prefixed name are treated as macro import, works only in compile time.
+
+Macros will never exist in runtime, so any code that attempt to do so should not be compiled. For example, Assigning macro to variable, assigning or declaring variable that has same name as declared macro, calling macro as a normal function, or calling runtime value as a macro, will generate compile error.
+
+Example below describes how to use `~MapLiteral()` macro in `sanescript-plugin-literals` package.
 
 ```js
 // SaneScript
 
-let map = ~Map({
+import {MapLiteral as oMap} from '~literals'
+
+let map = ~oMap({
   foo: 'bar',
   [obj]: 42,
   myFunc (arg) {
@@ -262,6 +284,8 @@ let map = ~Map({
 ```js
 // JavaScript
 
+// No import '~literals'
+
 let map = new Map([
   ['foo', 'bar'],
   [obj, 42],
@@ -272,10 +296,12 @@ let map = new Map([
 ])
 ```
 
+# [Compiler flag](https://github.com/SaneScript/SaneScript/blob/master/Flags.md)
+
 # Miscellaneous
 
 - `'use strict'` is inserted automatically.
 
 - Multi-lined template strings are automatically de-indented at compile time, like [dedent](https://github.com/dmnd/dedent).
 
-- Array literal within `await` expressions are automatically wrapped with `Promise.all()`.
+- Array literals within `await` expression are automatically wrapped with `Promise.all()`.
