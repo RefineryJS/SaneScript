@@ -7,6 +7,8 @@ SaneScript specification v0.5.0
 
 Inspired from [this article](https://github.com/rwaldron/tc39-notes/blob/master/es6/2015-01/JSExperimentalDirections.pdf)
 
+[Official compiler is here](https://github.com/SaneScript/babel-plugin-sanescript)
+
 See [Features.md](https://github.com/SaneScript/SaneScript/blob/master/Features.md) for the full list of SaneScript features.
 
 See [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md) and [Flags.md](https://github.com/SaneScript/SaneScript/blob/master/Flags.md) for the in-depth specification of SaneScript.
