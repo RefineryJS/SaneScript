@@ -1,3 +1,9 @@
+# Further development is moved to [RefinedJS](https://github.com/RefinedJS/RefinedJS) so check there!
+
+This repository is deprecated and remaining just for archiving purpose.
+
+But yeah, here is the starting point of the RefinedJS. So why should we remove it?
+
 SaneScript
 ===========
 
@@ -7,11 +13,11 @@ SaneScript specification v0.5.0
 
 Inspired from [this article](https://github.com/rwaldron/tc39-notes/blob/master/es6/2015-01/JSExperimentalDirections.pdf)
 
-[Official compiler is here](https://github.com/SaneScript/babel-plugin-sanescript)
+[Official compiler is here](https://github.com/RefinedJS/babel-plugin-sanescript)
 
-See [Features.md](https://github.com/SaneScript/SaneScript/blob/master/Features.md) for the full list of SaneScript features.
+See [Features.md](https://github.com/RefinedJS/SaneScript/blob/master/Features.md) for the full list of SaneScript features.
 
-See [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md) and [Flags.md](https://github.com/SaneScript/SaneScript/blob/master/Flags.md) for the in-depth specification of SaneScript.
+See [Details.md](https://github.com/RefinedJS/SaneScript/blob/master/Details.md) and [Flags.md](https://github.com/RefinedJS/SaneScript/blob/master/Flags.md) for the in-depth specification of SaneScript.
 
 See [here](https://gist.github.com/HyeonuPark/6af6965ca6b91cc6a79c) for the principles of the SaneScript.
 

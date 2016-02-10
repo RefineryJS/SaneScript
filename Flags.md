@@ -15,7 +15,7 @@ List of default flags are below.
 
 Default: `'$'`
 
-Set [existential operator](https://github.com/SaneScript/SaneScript/blob/master/Features.md#existential-operator) symbol.
+Set [existential operator](https://github.com/RefinedJS/SaneScript/blob/master/Features.md#existential-operator) symbol.
 
 ```js
 'set ExistentialOperator is_exist'
@@ -36,7 +36,7 @@ obj.is_exist // transformed to `obj != null`
 
 Default: `'_'`
 
-Set [hidden property](https://github.com/SaneScript/SaneScript/blob/master/Features.md#hidden-property) prefix symbol.
+Set [hidden property](https://github.com/RefinedJS/SaneScript/blob/master/Features.md#hidden-property) prefix symbol.
 
 ```js
 'set HiddenPropertyPrefix $$'
@@ -81,7 +81,7 @@ This flag must be in module's root block. Ones that placed in inner block will t
 
 Default: none
 
-Add target name for [automatic `new` insertion](https://github.com/SaneScript/SaneScript/blob/master/Features.md#automatic-new-insertion)
+Add target name for [automatic `new` insertion](https://github.com/RefinedJS/SaneScript/blob/master/Features.md#automatic-new-insertion)
 
 Notice that automatic `new` insertion is triggered by checking identifier name, not an object in that reference.
 
@@ -107,6 +107,6 @@ let obj3 = SameClass()      // not transformed
 
 Default: none
 
-Remove target name for [automatic `new` insertion](https://github.com/SaneScript/SaneScript/blob/master/Features.md#automatic-new-insertion)
+Remove target name for [automatic `new` insertion](https://github.com/RefinedJS/SaneScript/blob/master/Features.md#automatic-new-insertion)
 
-See [above](https://github.com/SaneScript/SaneScript/blob/master/Details.md#insertnew) for behavior.
+See [above](https://github.com/RefinedJS/SaneScript/blob/master/Details.md#insertnew) for behavior.

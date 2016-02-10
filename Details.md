@@ -1,11 +1,11 @@
 Details
 ========
 
-[Features.md](https://github.com/SaneScript/SaneScript/blob/master/Features.md) is simply a brief concept of the features, but actual compilation from SaneScript to JavaScript may differ due to some technical/minor reasons. This document describes those in-depth SaneScript specification.
+[Features.md](https://github.com/RefinedJS/SaneScript/blob/master/Features.md) is simply a brief concept of the features, but actual compilation from SaneScript to JavaScript may differ due to some technical/minor reasons. This document describes those in-depth SaneScript specification.
 
 # Existential operator
 
-Flags: [ExistentialOperator](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#existentialoperator)
+Flags: [ExistentialOperator](https://github.com/RefinedJS/SaneScript/blob/master/Flags.md#existentialoperator)
 
 Values that are used more than once will be cached.
 
@@ -49,7 +49,7 @@ let __saneValue__
 
 # Automatic `new` insertion
 
-Flags: [InsertNew](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#insertnew), [IgnoreInsertNew](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#ignoreinsertnew)
+Flags: [InsertNew](https://github.com/RefinedJS/SaneScript/blob/master/Flags.md#insertnew), [IgnoreInsertNew](https://github.com/RefinedJS/SaneScript/blob/master/Flags.md#ignoreinsertnew)
 
 List of the default target keywords are below.
 
@@ -68,11 +68,11 @@ List of the default target keywords are below.
 - Intl.DateTimeFormat
 - Intl.NumberFormat
 
-You can add to, or remove from the keyword list; See [Flags.md, InsertNew and IgnoreInsertNew](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#insertnew).
+You can add to, or remove from the keyword list; See [Flags.md, InsertNew and IgnoreInsertNew](https://github.com/RefinedJS/SaneScript/blob/master/Flags.md#insertnew).
 
 # Syntactic getter/setter
 
-To support immutable data structures, like Immutable.js, setter transformation is little bit more complicated than described in [Features.md](https://github.com/SaneScript/SaneScript/blob/master/Features.md). This makes it possible to handle immutable data as normal mutable data.
+To support immutable data structures, like Immutable.js, setter transformation is little bit more complicated than described in [Features.md](https://github.com/RefinedJS/SaneScript/blob/master/Features.md). This makes it possible to handle immutable data as normal mutable data.
 
 Values used more than once will be cached.
 
@@ -119,7 +119,7 @@ let __saneCollection__, __saneValue__
 
 # Hidden property
 
-Flags: [HiddenPropertyPrefix](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#hiddenpropertyprefix), [ExportedSymbolKeyword](https://github.com/SaneScript/SaneScript/blob/master/Flags.md#exportedsymbolkeyword)
+Flags: [HiddenPropertyPrefix](https://github.com/RefinedJS/SaneScript/blob/master/Flags.md#hiddenpropertyprefix), [ExportedSymbolKeyword](https://github.com/RefinedJS/SaneScript/blob/master/Flags.md#exportedsymbolkeyword)
 
 Single underscore, with nothing behind, will not be replaced.
 

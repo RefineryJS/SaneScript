@@ -3,7 +3,7 @@ Features
 
 Brief description of the SaneScript features.
 
-Note that examples below can be a bit different from actual compiled results, due to technical/minor reasons. For such cases, see [Details.md](https://github.com/SaneScript/SaneScript/blob/master/Details.md)
+Note that examples below can be a bit different from actual compiled results, due to technical/minor reasons. For such cases, see [Details.md](https://github.com/RefinedJS/SaneScript/blob/master/Details.md)
 
 # Sane equality operator
 
@@ -97,7 +97,7 @@ switch (value) {
 }
 ```
 
-# Existential operator <sup><sup>[detail](https://github.com/SaneScript/SaneScript/blob/master/Details.md#existential-operator)</sup></sup>
+# Existential operator <sup><sup>[detail](https://github.com/RefinedJS/SaneScript/blob/master/Details.md#existential-operator)</sup></sup>
 
 > `a.$.b.$().c`
 
@@ -129,7 +129,7 @@ a != null
   : a())
 ```
 
-# Automatic `new` insertion <sup><sup>[detail](https://github.com/SaneScript/SaneScript/blob/master/Details.md#automatic-new-insertion)</sup></sup>
+# Automatic `new` insertion <sup><sup>[detail](https://github.com/RefinedJS/SaneScript/blob/master/Details.md#automatic-new-insertion)</sup></sup>
 
 > No more `new`
 
@@ -147,7 +147,7 @@ let map = Map()
 let map = new Map()
 ```
 
-# Syntactic getter/setter <sup><sup>[detail](https://github.com/SaneScript/SaneScript/blob/master/Details.md#syntactic-gettersetter)</sup></sup>
+# Syntactic getter/setter <sup><sup>[detail](https://github.com/RefinedJS/SaneScript/blob/master/Details.md#syntactic-gettersetter)</sup></sup>
 
 > `map[key]`, `map[key] = value`
 
@@ -167,7 +167,7 @@ obj.get(key)
 obj.set(key, 'value')
 ```
 
-# Hidden property <sup><sup>[detail](https://github.com/SaneScript/SaneScript/blob/master/Details.md#hidden-property)</sup></sup>
+# Hidden property <sup><sup>[detail](https://github.com/RefinedJS/SaneScript/blob/master/Details.md#hidden-property)</sup></sup>
 
 > `obj._hidden`
 
@@ -296,7 +296,7 @@ let map = new Map([
 ])
 ```
 
-# [Compiler flag](https://github.com/SaneScript/SaneScript/blob/master/Flags.md)
+# [Compiler flag](https://github.com/RefinedJS/SaneScript/blob/master/Flags.md)
 
 # Miscellaneous
 
